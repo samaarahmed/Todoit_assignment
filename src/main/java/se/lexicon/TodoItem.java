@@ -1,6 +1,7 @@
 package se.lexicon;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class TodoItem {
 
@@ -20,8 +21,10 @@ public class TodoItem {
         this.creator = creator;
     }
 
-     TodoItem() {
+    public TodoItem() {
+
     }
+
 
     public int getId() {
         return id;
@@ -77,10 +80,7 @@ public class TodoItem {
         this.creator = creator;
     }
 
-    public String getSummary() {
-        return "{Id:" + id + " Title:" + title + "TaskDescription:" + taskDescription
-                + "Status:" + done + "Creator:" + creator + "}";
-    }
+
 
     public boolean isOverdue() {
         LocalDate currentDate = LocalDate.now();
@@ -90,4 +90,27 @@ public class TodoItem {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "TodoItem{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", taskDescription='" + taskDescription + '\'' +
+                ", deadLine=" + deadLine +
+                ", done=" + done +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof TodoItem)) return false;
+        TodoItem todoItem = (TodoItem) o;
+        return id == todoItem.id && done == todoItem.done && Objects.equals(title, todoItem.title) && Objects.equals(taskDescription, todoItem.taskDescription) && Objects.equals(deadLine, todoItem.deadLine);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, taskDescription, deadLine, done);
+    }
 }
