@@ -38,7 +38,7 @@ public class AppUserDAOImpl implements AppUserDAO {
     }
 
     @Override
-    public void remove(AppUser username) {
+    public void remove(String username) {
         appUsers.remove(username);
     }
 }

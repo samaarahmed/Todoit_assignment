@@ -12,10 +12,10 @@ public interface TodoItemDAO {
     Collection<TodoItem> findAll();
     Collection<TodoItem> findAllByDoneStatus(Boolean done);
     Collection<TodoItem> findByTitleContains(String title);
-    Collection<TodoItem> findByPersonId(String personId);
+    Collection<TodoItem> findByPersonId(int personId);
     Collection<TodoItem> findByDeadlineBefore(LocalDate date);
     Collection<TodoItem> findByDeadlineAfter(LocalDate date);
-    void remove(TodoItem id);
+    void remove(int id);
 
 
 

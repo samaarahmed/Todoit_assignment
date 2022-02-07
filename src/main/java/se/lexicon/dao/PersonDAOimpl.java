@@ -3,13 +3,14 @@ package se.lexicon.dao;
 import se.lexicon.AppUser;
 import se.lexicon.Person;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 public class PersonDAOimpl implements PersonDAO{
 
-    private  List<Person> persons;
+    private  List<Person> persons ;
 
     public PersonDAOimpl(List<Person> persons) {
         this.persons = persons;
@@ -35,7 +36,7 @@ public class PersonDAOimpl implements PersonDAO{
     @Override
     public Person findByEmail(String email) {
         for (Person p : persons) {
-            if (p.getEmail().trim().equalsIgnoreCase(email)) {
+            if (p.getEmail().trim().equalsIgnoreCase(email.trim())) {
                 return p;
             }
 
@@ -49,7 +50,8 @@ public class PersonDAOimpl implements PersonDAO{
     }
 
     @Override
-    public void remove(Person id) {
-        persons.remove(id);
+    public void remove(int id) {
+       Person person = findById(id);
+        persons.remove(person);
     }
 }

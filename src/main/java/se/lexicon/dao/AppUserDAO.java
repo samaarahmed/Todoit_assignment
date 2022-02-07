@@ -9,6 +9,6 @@ public interface AppUserDAO {
     AppUser persist(AppUser appUser);
     AppUser findByUsername(String username);
     Collection<AppUser> findAll();
-    void remove(AppUser username);
+    void remove(String username);
 
 }
